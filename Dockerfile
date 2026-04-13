@@ -33,3 +33,17 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD python -c "import discord; import groq; print('OK')" || exit 1
 
 CMD ["python", "run.py"]
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+FROM python:3.10
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
+
+CMD ["bash", "start.sh"]

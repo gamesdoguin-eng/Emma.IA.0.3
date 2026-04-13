@@ -1,7 +1,7 @@
+torch --index-url https://download.pytorch.org/whl/cpu
 discord.py
 groq
 python-dotenv
-torch
 torchaudio
 requests
 edge-tts
