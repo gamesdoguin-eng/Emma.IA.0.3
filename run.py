@@ -11,7 +11,7 @@ import io
 import wave
 import torch
 import numpy as np
-import pyaudio
+# import pyaudio  # Removido - não funciona em Railway. Import condicional abaixo.
 import requests
 import edge_tts
 import random
@@ -57,6 +57,12 @@ if not GROQ_API_KEY_LLM:
 
 if RAILWAY_MODE:
     print("🚀 [RAILWAY MODE] Emma iniciando em ambiente de nuvem (Discord Bot apenas)")
+else:
+    try:
+        import pyaudio  # Apenas em modo local
+    except ImportError:
+        pyaudio = None
+        print("⚠️ PyAudio não instalado - modo voz desativado")
 
 #endregion
 # ======================================================
@@ -671,6 +677,11 @@ async def processar_ia(client_nvidia, client_llm, client_vision, sys_prompt, tex
 # region 🎤 MODOS DE OPERAÇÃO
 # ======================================================
 async def run_modo_continuo(client_nvidia, client_llm, client_vision, sys_prompt, voice_filter, api_key_whisper, nome_ai, usuario_nome, launcher):
+    if not pyaudio:
+        print("❌ PyAudio não disponível - Modo voz desativado")
+        print("   Configure PyAudio localmente para usar este modo")
+        return
+    
     print("\n" + "="*30)
     print(" MODO VOZ ATIVA (ESCUTA CONTÍNUA)")
     print("F1: Gatilho de Voz | F2: Visão Computacional | HOME: Menu")
@@ -707,6 +718,11 @@ async def run_modo_continuo(client_nvidia, client_llm, client_vision, sys_prompt
     stream.stop_stream(); stream.close(); p.terminate()
     
 async def run_modo_click(client_nvidia, client_llm, client_vision, sys_prompt, api_key_whisper, nome_ai, usuario_nome, launcher):
+    if not pyaudio:
+        print("❌ PyAudio não disponível - Modo Click-to-Talk desativado")
+        print("   Configure PyAudio localmente para usar este modo")
+        return
+    
     print("\n" + "="*30)
     print(" MODO CLICK-TO-TALK")
     print("R-SHIFT: Clica Grava / Clica Envia")

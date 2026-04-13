@@ -3,7 +3,6 @@ groq
 python-dotenv
 torch
 torchaudio
-pyaudio
 requests
 edge-tts
 pygame
