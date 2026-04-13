@@ -1,10 +1,6 @@
 discord.py
 groq
 python-dotenv
-torch-cpu
 requests
 edge-tts
-keyboard
-pillow
 openai
-numpy
