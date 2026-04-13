@@ -1,10 +1,10 @@
-# Stage 1: Builder - instala dependências
+# Stage 1: Builder - instala dependências (otimizado para Railway)
 FROM python:3.12-slim as builder
 
 WORKDIR /app
 
-# Instalar dependências
-COPY requirements.txt .
+# Instalar dependências com torch-cpu para economizar espaço (~1.5 GB)
+COPY requirements-railway.txt requirements.txt
 RUN pip install --no-cache-dir --user -r requirements.txt
 
 # Stage 2: Runtime - imagem final otimizada
