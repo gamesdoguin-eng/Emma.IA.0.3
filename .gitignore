@@ -1,0 +1,72 @@
+# 🔐 Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 🔐 Environment
+.env
+.env.local
+.env.*.local
+venv/
+ENV/
+env/
+.venv
+
+# 🔐 IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 📦 Package managers
+node_modules/
+package-lock.json
+yarn.lock
+
+# 💾 Data/Logs
+*.log
+*.pot
+*.mo
+Arcana/armazen/*.json
+memoria_visual/
+output/
+
+# 🧪 Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 🎵 Media
+*.mp3
+*.wav
+*.flac
+*.m4a
+vocal_*.mp3
+
+# ⚙️ System
+.DS_Store
+Thumbs.db
+
+# 🔐 IMPORTANTE: Nunca commit de variáveis sensíveis!
+# Use .env.example como template
+# Configure no Railway Dashboard, não em .env commitado
